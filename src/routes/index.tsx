@@ -43,7 +43,7 @@ function MockQrCode() {
     cells.push(((seed >> 16) & 1) === 1);
   }
   const isFinder = (r: number, c: number) => {
-    const corners = [
+    const corners: Array<readonly [number, number]> = [
       [0, 0],
       [0, n - 7],
       [n - 7, 0],
