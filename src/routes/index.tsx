@@ -15,7 +15,13 @@ import {
   ShoppingBag,
   ShieldAlert,
   BarChart3,
+  Play,
 } from "lucide-react";
+
+import guideBleeding from "@/assets/guide-bleeding-money.jpg";
+import guidePaying from "@/assets/guide-paying-friends.jpg";
+import guideZeroRisk from "@/assets/guide-zero-risk.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -295,7 +301,7 @@ const moreFeatures: MoreFeature[] = [
 function MoreFeatures() {
   const [open, setOpen] = useState(false);
   return (
-    <section className="mx-auto max-w-6xl px-4 pb-24">
+    <section className="mx-auto max-w-6xl px-4 pb-12">
       <div className="text-center">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           More Ways to Practise
