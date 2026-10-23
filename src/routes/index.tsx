@@ -10,6 +10,11 @@ import {
   CheckCircle2,
   X,
   Users,
+  Gauge,
+  QrCode,
+  ShoppingBag,
+  ShieldAlert,
+  BarChart3,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -271,6 +276,90 @@ function BillSplitterDemo() {
   );
 }
 
+type MoreFeature = {
+  title: string;
+  desc: string;
+  icon: typeof Wallet;
+  to?: "/budgeting-practice" | "/credit-score-simulator";
+};
+
+const moreFeatures: MoreFeature[] = [
+  { title: "Smart Budget Warning", desc: "Set a monthly budget and get warned before overspending.", icon: Wallet, to: "/budgeting-practice" },
+  { title: "Credit Score Simulator", desc: "See how good and bad habits move your credit score.", icon: Gauge, to: "/credit-score-simulator" },
+  { title: "QR Payment Practice", desc: "Practise scanning DuitNow QR codes safely.", icon: QrCode },
+  { title: "Pasar Malam Scenarios", desc: "Real-life night market payment role-play.", icon: ShoppingBag },
+  { title: "Scam Spotter", desc: "Learn to spot fake payment links and scams.", icon: ShieldAlert },
+  { title: "Learning Progress", desc: "Track the money skills you've mastered.", icon: BarChart3 },
+];
+
+function MoreFeatures() {
+  const [open, setOpen] = useState(false);
+  return (
+    <section className="mx-auto max-w-6xl px-4 pb-24">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          More Ways to Practise
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+          Supporting tools around our two core features — budget control and social splitting.
+        </p>
+      </div>
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {moreFeatures.map((f) => {
+          const inner = (
+            <>
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-secondary-foreground">
+                <f.icon className="h-5 w-5" />
+              </span>
+              <h3 className="mt-4 font-semibold text-card-foreground">{f.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
+              <span className="mt-3 inline-block text-xs font-medium text-primary">
+                {f.to ? "Try it now →" : "Coming soon"}
+              </span>
+            </>
+          );
+          const cls =
+            "block cursor-pointer rounded-2xl border border-border bg-card p-6 text-left shadow-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl";
+          return f.to ? (
+            <Link key={f.title} to={f.to} className={cls}>
+              {inner}
+            </Link>
+          ) : (
+            <button key={f.title} onClick={() => setOpen(true)} className={cls}>
+              {inner}
+            </button>
+          );
+        })}
+      </div>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/30 p-4 backdrop-blur-sm animate-in fade-in duration-300"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-border bg-card/90 p-6 text-center shadow-2xl backdrop-blur-md animate-in zoom-in-95 fade-in duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h4 className="text-xl font-bold text-card-foreground">🚀 Feature in Development</h4>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Due to hackathon time constraints, this feature is on our future roadmap. Stay tuned!
+            </p>
+            <button
+              onClick={() => setOpen(false)}
+              className="mt-6 w-full cursor-pointer rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:scale-105 hover:bg-primary/90"
+            >
+              Got it!
+            </button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
@@ -317,7 +406,7 @@ function Index() {
       </section>
 
       {/* Killer Features */}
-      <section id="features" className="mx-auto max-w-6xl px-4 pb-24">
+      <section id="features" className="mx-auto max-w-6xl px-4 pb-16">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Our Killer Features
@@ -332,6 +421,8 @@ function Index() {
           <BillSplitterDemo />
         </div>
       </section>
+
+      <MoreFeatures />
 
       {/* Footer */}
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
