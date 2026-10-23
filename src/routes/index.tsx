@@ -148,15 +148,14 @@ function Index() {
       <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:py-24">
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5 text-sm font-medium text-secondary-foreground">
           <Sparkles className="h-4 w-4" />
-          Hackathon Prototype
+          Group6 KASOC 2026
         </span>
         <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl">
           Practise digital payments.{" "}
           <span className="text-primary">Zero real money.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          PayReady is a safe playground for Malaysians to build confidence with
-          budgeting, QR payments and credit — before doing it for real.
+          PayReady is a secure sandbox designed exclusively for UUM students to build trust in digital banking—mastering campus budgets, QR payments, and credit with absolute zero risk.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
