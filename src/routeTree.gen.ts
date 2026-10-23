@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BudgetingPracticeRouteImport } from './routes/budgeting-practice'
+import { Route as CreditScoreSimulatorRouteImport } from './routes/credit-score-simulator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BudgetingPracticeRoute = BudgetingPracticeRouteImport.update({
+  id: '/budgeting-practice',
+  path: '/budgeting-practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditScoreSimulatorRoute = CreditScoreSimulatorRouteImport.update({
+  id: '/credit-score-simulator',
+  path: '/credit-score-simulator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/budgeting-practice': typeof BudgetingPracticeRoute
+  '/credit-score-simulator': typeof CreditScoreSimulatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/budgeting-practice': typeof BudgetingPracticeRoute
+  '/credit-score-simulator': typeof CreditScoreSimulatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/budgeting-practice': typeof BudgetingPracticeRoute
+  '/credit-score-simulator': typeof CreditScoreSimulatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/budgeting-practice' | '/credit-score-simulator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/budgeting-practice' | '/credit-score-simulator'
+  id: '__root__' | '/' | '/budgeting-practice' | '/credit-score-simulator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BudgetingPracticeRoute: typeof BudgetingPracticeRoute
+  CreditScoreSimulatorRoute: typeof CreditScoreSimulatorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/budgeting-practice': {
+      id: '/budgeting-practice'
+      path: '/budgeting-practice'
+      fullPath: '/budgeting-practice'
+      preLoaderRoute: typeof BudgetingPracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credit-score-simulator': {
+      id: '/credit-score-simulator'
+      path: '/credit-score-simulator'
+      fullPath: '/credit-score-simulator'
+      preLoaderRoute: typeof CreditScoreSimulatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BudgetingPracticeRoute: BudgetingPracticeRoute,
+  CreditScoreSimulatorRoute: CreditScoreSimulatorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
