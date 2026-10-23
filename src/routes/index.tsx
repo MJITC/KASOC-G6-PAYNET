@@ -366,6 +366,76 @@ function MoreFeatures() {
   );
 }
 
+const guides = [
+  {
+    img: guideBleeding,
+    title: "How You're Bleeding Money on Campus (And How to Stop It)",
+    blurb: "The small daily leaks that empty a student wallet — and the fix for each one.",
+    len: "6:12",
+  },
+  {
+    img: guidePaying,
+    title: "The Only Digital Banking Hack University Students Actually Need",
+    blurb: "Split a bill once, get paid back without the awkward follow-up texts.",
+    len: "4:48",
+  },
+  {
+    img: guideZeroRisk,
+    title: "Digital Banking for Beginners: Master Your Money with Zero Risk",
+    blurb: "Start from nothing and build real habits inside a sandbox with no real money.",
+    len: "8:05",
+  },
+];
+
+function WatchAndLearn() {
+  return (
+    <section className="mx-auto max-w-6xl px-4 pb-16">
+      <div className="text-center">
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          Campus Financial Guides
+        </span>
+        <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          Watch &amp; Learn
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+          Short guides our team put together for UUM students — the same ideas behind budget
+          control and the social splitter.
+        </p>
+      </div>
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {guides.map((g) => (
+          <figure
+            key={g.title}
+            className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl"
+          >
+            <div className="relative aspect-video overflow-hidden">
+              <img
+                src={g.img}
+                alt={g.title}
+                className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+              />
+              <span className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-background/80 text-foreground shadow-lg backdrop-blur-sm">
+                  <Play className="ml-0.5 h-5 w-5" />
+                </span>
+              </span>
+              <span className="pointer-events-none absolute bottom-2 right-2 rounded-md bg-foreground/80 px-1.5 py-0.5 text-xs font-semibold text-background">
+                {g.len}
+              </span>
+            </div>
+            <figcaption className="p-4">
+              <h3 className="text-sm font-semibold leading-snug text-card-foreground">
+                {g.title}
+              </h3>
+              <p className="mt-1 text-xs text-muted-foreground">{g.blurb}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
@@ -429,6 +499,8 @@ function Index() {
       </section>
 
       <MoreFeatures />
+
+      <WatchAndLearn />
 
       {/* Footer */}
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
