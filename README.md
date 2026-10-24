@@ -1,5 +1,7 @@
 # Pocket Pantry Pulse
 
+https://sites.google.com/view/payready-campus-platform/full-page-embed
+
 https://pocket-playground-payments.lovable.app/
 
 I want to upgrade the "Features" section of this existing Pocket Playground Payments app for a Hackathon pitching demo. Please modify the current code to implement the following logic without breaking the existing layout or theme:
